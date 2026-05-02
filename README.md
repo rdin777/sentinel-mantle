@@ -1,66 +1,52 @@
-## Foundry
+Markdown
+# 🛡️ Sentinel: AI-Driven Security Infrastructure
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+**Sentinel** is an autonomous security agent built for the **Mantle Network** ecosystem. It shifts the paradigm from reactive manual audits to proactive, real-time protection. Sentinel acts as an "on-chain immune system," specifically designed to monitor, simulate, and neutralize infrastructure-level threats.
 
-Foundry consists of:
+## 🚀 Overview
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+In the current Web3 landscape, point-in-time audits are insufficient to prevent logical errors or infrastructure exploits that emerge post-deployment. Sentinel addresses this by combining high-performance monitoring with predictive simulations.
 
-## Documentation
+### Key Focus Areas:
+*   **Invariant Monitoring:** Real-time tracking of protocol-specific invariants (e.g., Solvency, Total Supply vs. Collateral).
+*   **Exploit Prevention:** Detecting anomalies like "Permanent Bricking" or "Dust Leaks" before they impact user funds.
+*   **Predictive Shielding:** Running parallel simulations in forked environments before finalizing high-value agentic actions.
 
-https://book.getfoundry.sh/
+## 🛠️ Tech Stack
 
-## Usage
+*   **Blockchain Infrastructure:** [Mantle Network](https://www.mantle.xyz/)
+*   **Security Testing & Simulation:** [Foundry](https://book.getfoundry.sh/) (Forge/Anvil)
+*   **Off-chain Monitoring logic:** [Clojure](https://clojure.org/)
+*   **Frameworks:** OpenZeppelin, Solady
 
-### Build
+## 🏗️ Architecture
 
-```shell
-$ forge build
-```
+1.  **Observer (Clojure):** Monitors Mantle RPC for specific event logs and state changes with millisecond latency.
+2.  **Simulator (Foundry):** When a suspicious state change is detected, the agent triggers a `forge test` in a local fork to predict the outcome of the transaction.
+3.  **Guardian (Smart Contract):** If a simulation fails or an invariant is breached, the Guardian contract triggers emergency mitigation (e.g., pausing the vault).
 
-### Test
+## 📂 Project Structure
+```text
+.
+├── src/                # Smart contracts for Sentinel Guardian
+├── test/               # Foundry security tests & invariant simulations
+├── monitoring/         # Clojure scripts for real-time RPC monitoring
+└── script/             # Deployment scripts for Mantle Network
+🛠️ Getting Started
+Prerequisites
+Foundry
 
-```shell
-$ forge test
-```
+Clojure/Leiningen
+Installation
+Bash
+git clone [https://github.com/rdin777/sentinel-mantle](https://github.com/rdin777/sentinel-mantle)
+cd sentinel-mantle
+forge install
+Running Simulations
+Bash
+forge test --match-path test/Sentinel.t.sol
+📜 License
+MIT
 
-### Format
 
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+---
