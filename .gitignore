@@ -12,3 +12,8 @@ docs/
 
 # Dotenv file
 .env
+```text
+    # Clojure
+    .cpcache/
+    target/
+    pom.xml
